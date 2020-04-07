@@ -77,6 +77,11 @@ Route::get('replyable/{id}/{type}', 'ReplyAbleController@redirect')->name('reply
 Route::get('subscriptions/{subscription}/unsubscribe', 'SubscriptionController@unsubscribe')
     ->name('subscriptions.unsubscribe');
 
+// Articles
+Route::prefix('articles')->namespace('Articles')->group(function () {
+    Route::get('{article}', 'ArticlesController@show')->name('article');
+});
+
 // Admin
 Route::prefix('admin')->name('admin')->namespace('Admin')->group(function () {
     Route::get('/', 'AdminController@index');
